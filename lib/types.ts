@@ -75,6 +75,7 @@ export interface ChecklistItem {
   notes: string | null
   dev_checked: boolean
   pdt_checked: boolean
+  pdt_required: boolean
   order_num: number
 }
 
