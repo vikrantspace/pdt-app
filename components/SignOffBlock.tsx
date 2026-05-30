@@ -43,8 +43,8 @@ export default function SignOffBlock({
   const [rejecting, setRejecting] = useState(false)
 
   const canDevSign    = profile.role === 'developer' && !stage.dev_signed_at && stage.status === 'in_progress'
-  const canHeadSign   = profile.role === 'team_head' && stage.dev_signed_at && !stage.teamhead_signed_at
-  const canPdtSign    = profile.role === 'pdt_head' && stage.teamhead_signed_at && !stage.pdthead_signed_at && stage.status === 'submitted'
+  const canHeadSign   = profile.role === 'team_head' && !!stage.dev_signed_at && !stage.teamhead_signed_at
+  const canPdtSign    = profile.role === 'pdt_head' && !!stage.teamhead_signed_at && !stage.pdthead_signed_at && stage.status === 'submitted'
 
   const sign = async (step: 'dev' | 'teamhead' | 'pdthead') => {
     const now = new Date().toISOString()
